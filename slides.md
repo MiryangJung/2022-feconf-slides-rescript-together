@@ -1,13 +1,15 @@
 ---
 theme: geist
 title: ReScript 같이 해요
-titleTemplate: "%s - Miryang"
+titleTemplate: '%s - Miryang'
 highlighter: prism
 lineNumbers: true
 aspectRatio: 4/3
 fonts:
-  sans: "Pretendard"
-  mono: "Elice Digital Coding"
+  sans: 'Pretendard'
+  mono: 'Elice Digital Coding'
+download: false
+favicon: '/images/rescript.png'
 ---
 
 <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-rose-300 to-red-600">

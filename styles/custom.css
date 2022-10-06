@@ -1,0 +1,83 @@
+@import "./prism-base.css";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
+@import url("https://font.elice.io/EliceDigitalCoding.css");
+
+body, button {
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+h1 {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    margin: 0;
+}
+
+ul {
+    font-size: 26px;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 26px;
+}
+
+table {
+    font-size: 20px;
+}
+
+.section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+code {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    font-family: 'Elice Digital Coding', 'monospace'; 
+}
+
+html:not(.dark) {
+    --prism-foreground: #393a34;
+    --prism-background: #fbfbfb;
+    --prism-comment: #b8c4b8;
+    --prism-string: #f76d47;
+    --prism-literal: #3a9c9b;
+    --prism-keyword: #248459;
+    --prism-function: #36acaa;
+    --prism-deleted: #020101;
+    --prism-class: #00a4db;
+    --prism-builtin: #e53935;
+    --prism-property: #ad502b;
+    --prism-namespace: #c96880;
+    --prism-punctuation: #8e8f8b;
+    --prism-decorator: #bd8f8f;
+    --prism-json-property: #698c96;
+  }
+
+  html.dark {
+    --prism-foreground: #d4d4d4;
+    --prism-background: #1e1e1e;
+  
+    --prism-namespace: #aaaaaa;
+    --prism-comment: #758575;
+    --prism-namespace: #444444;
+    --prism-string: #c96880;
+    --prism-punctuation: #d4d4d4;
+    --prism-literal: #36acaa;
+    --prism-keyword: #38a776;
+    --prism-function: #dcdcaa;
+    --prism-deleted: #9a050f;
+    --prism-class: #3a9c9b;
+    --prism-builtin: #d16969;
+    --prism-property: #ce9178;
+    --prism-regex: #ad502b;
+  }

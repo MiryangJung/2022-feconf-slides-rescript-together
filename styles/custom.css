@@ -28,6 +28,10 @@ table {
     font-size: 20px;
 }
 
+.note p{
+    font-size: 16px;
+}
+
 .section {
     position: absolute;
     width: 100%;

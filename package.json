@@ -1,5 +1,5 @@
 {
-  "name": "2022-feconf-presentation-rescript-together",
+  "name": "2022-feconf-slides-rescript-together",
   "private": true,
   "scripts": {
     "build": "slidev build",

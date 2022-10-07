@@ -5,3 +5,4 @@ index.html
 .remote-assets
 components.d.ts
 *.log
+dist

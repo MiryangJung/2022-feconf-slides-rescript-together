@@ -171,9 +171,11 @@ TypeScript처럼 JavaScript의 슈퍼셋인가? 라고 생각하실 수도 있�
 
 # Hello World!
 
-<video controls autoplay class="m-auto max-h-120">
+<!-- <video controls autoplay class="m-auto max-h-120">
   <source src="/images/example.mp4" type="video/mp4">
-</video>
+</video> -->
+
+<img class="m-auto max-h-150" src="/images/example.gif" alt="리스크립트 예시 코드" />
 
 <!--
 ReScript의 플레이그라운드에서 간단하게 log를 찍는 코드와

@@ -8,6 +8,7 @@ aspectRatio: 4/3
 fonts:
   sans: "Pretendard"
   mono: "Elice Digital Coding"
+  provider: 'none'
 download: false
 favicon: "https://rescript-lang.org/static/nav-logo@2x.png"
 ---

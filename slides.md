@@ -317,8 +317,8 @@ export { default as Title } from "./Title";
 ```
 
 <!--
-ReScript에서는 export import를 작성하지 않아도 되는 것입니다.
-화면에 보이는 예시는 5개의 export를 하고 있지만 파일에 따라 10개 이상의 export 구문을 작성하곤 합니다.
+ReScript에서는 export import를 작성하지 않아도 됩니다.
+컴포넌트를 분리하다보면 10개 이상의 export 구문을 작성하곤 합니다.
 파일의 위치가 바뀌거나 이름이 변경된 경우 등이 발생하면 함께 수정해 줘야 하는 번거로움이 있습니다.
 -->
 
@@ -417,8 +417,6 @@ import할 파일의 위치를 몰라도 상관없으며, import 했던 파일의
 
 암시적으로 import를 하기 때문에 해당 파일이 어떤 의존성을 가지는 지 한 눈에 파악하기 힘든 점은 있습니다.
 하지만 ReScript는 의존하고 있는 파일에서 변경이 일어나 충돌의 여지가 생긴다면 컴파일 타임에 에러를 만들어 주므로 크게 단점이라고 생각이 든 적은 없습니다.
-
-export import 하는 시간이 줄어드는 게 아니라 없어지는 경험 굉장히 편하고 좋았습니다.
 -->
 
 ---
@@ -467,7 +465,7 @@ ReScript의 꽃이라고 얘기할 수 있는 힌들리 밀너 타입 추론 시
 타입 어노테이션 없이도 각 함수들은 다음과 같은 타입을 가지게 됩니다.
 
 add1으로 추론되는 과정을 설명하자면 +연산자는 int에만 사용할 수 있습니다.
-즉, a 와 b 인자는 int 여야하므로, int를 받고, int를 반환한다고 추론할 수 있게 됩니다.
+즉, a 와 b 인자는 int 여야만하므로, int를 받고, int를 반환한다고 추론할 수 있게 됩니다.
 
 add2의 ++ 연산자는 string, add3의 +. 연산자는 float을 대상으로 한 연산자이므로 타입 추론이 가능해지게 됩니다
 -->
@@ -490,17 +488,18 @@ add2의 ++ 연산자는 string, add3의 +. 연산자는 float을 대상으로 �
 연산자에만 국한되는 것은 아닙니다.
 
 int 타입인 age, string 타입인 name을 필드로 갖는 person이라는 레코드 타입을 선언합니다.
-그리고 data 에 age 필드만 작성하게 되면 타입 에러가 발생합니다.
-
+그리고 data 에 age 필드만 작성하게 되면 타입 에러가 발생합니다.  
 name 필드가 선언되지 않았다는 에러 메시지를 확인할 수 있는데요.
 즉 data는 자동으로 person이라는 타입으로 추론된 것입니다.
+
+click!
 
 실제로 프로덕션 코드를 작성할 때도 어노테이션을 명시하는 경우는 거의 없습니다.
 타입 어노테이션이 눈에 보이지 않아 불편할 수도 있다고 생각할 수 있으나
 IDE에서 렌즈를 켜서 타입을 다 확인할 수 있습니다.
 
 강타입을 사용하면 개발이 어렵겠다고 생각할 수도 있지만 안전한 타입 시스템 안에서 개발을 하다보면 굉장히 편합니다.
-개발자의 실수로 잘못된 값을 넣는 일이 없어지고, 어차피 컴파일 때 에러가 발생할 것이라는 믿음이 생기기 때문입니다.
+개발자의 실수로 잘못된 값을 넣는 일이 없어지고, 어차피 컴파일 때 에러가 발생할 것이라는 믿음이 있기 때문입니다.
 -->
 
 ---
@@ -726,6 +725,7 @@ Uncaught TypeError: Cannot read properties of null (reading 'value')
 </div>
 
 <!--
+패턴매칭은 이만 마치고 null에 대해서 얘기해보겠습니다.  
 퀵소트를 고안해낸 컴퓨터 과학자인 토니 호어는 이렇게 얘기한 적이 있습니다.
 저는 그것을 저의 10억 달러 실수라고 부릅니다. 그것은 1965년에 null을 발명한 것입니다.
 
@@ -796,7 +796,7 @@ option 타입의 정의는 None 또는 Some 입니다. 그리고 option 타입�
 
 # 예시
 
-```res {1|5|7-13|9-11|16|18-21|15-24} {maxHeight: 100}
+```res {1|5|7-13} {maxHeight: 100}
 type result_t = Pending | Success(string) | Fail
 
 @react.component
@@ -837,9 +837,41 @@ click!
 
 button을 클릭했을 때 실행될 handler인 handleClick 함수입니다.
 Api에 요청 후 응답을 response에 담고, option 타입인 response를 패턴매칭으로 처리합니다.
+-->
 
-click!
+---
 
+# 예시
+
+```res {9-11|16} {maxHeight: 100}
+type result_t = Pending | Success(string) | Fail
+
+@react.component
+let default = () => {
+  let (result, setResult) = React.useState(_ => Pending)
+
+  let handleClick = e => {
+    e->ReactEvent.Synthetic.preventDefault
+    let response {
+      | Some(res) => setResult(_ => Success(res))
+      | None => setResult(_ => Fail)
+    }
+  }
+
+  <>
+  <button onClick={handleClick}> {`URL 생성` -> React.string} </button>
+  {
+    switch result {
+      | Pending => {`요청 중...` -> React.string}
+      | Fail => {`요청 실패` -> React.string}
+      | Success(url) => {url -> React.string}
+    }
+  }
+  </>
+}
+```
+
+<!--
 response에 값이 있을 때는 값을 담은 Success 타입으로, 값이 없을 때는 Fail로 result 상태를 변경합니다.
 
 click!
@@ -847,9 +879,41 @@ click!
 다른 언어로 React를 사용하고 계시던 분들은 이상하게 느껴질 부분이 React.string 일 거 같습니다.
 React element로서의 타입도 체크되어야 하기 때문에 문자열도 React.string 함수를 이용해 변환해 줘야 합니다.
 object나 배열, Date 등을 그대로 노출시키는 실수를 하지 않게 되었습니다만 사실 저 또한 아직까지 조금 번거롭다고 느껴지는 부분이기도 합니다.
+-->
 
-click!
+---
 
+# 예시
+
+```res {18-21|15-24} {maxHeight: 100}
+type result_t = Pending | Success(string) | Fail
+
+@react.component
+let default = () => {
+  let (result, setResult) = React.useState(_ => Pending)
+
+  let handleClick = e => {
+    e->ReactEvent.Synthetic.preventDefault
+    let response {
+      | Some(res) => setResult(_ => Success(res))
+      | None => setResult(_ => Fail)
+    }
+  }
+
+  <>
+  <button onClick={handleClick}> {`URL 생성` -> React.string} </button>
+  {
+    switch result {
+      | Pending => {`요청 중...` -> React.string}
+      | Fail => {`요청 실패` -> React.string}
+      | Success(url) => {url -> React.string}
+    }
+  }
+  </>
+}
+```
+
+<!--
 result 상태는 result_t의 배리언트 타입이므로 패턴 매칭을 사용해 상태마다 다른 엘리먼트가 렌더링되게 할 수 있습니다.
 Pending 일 때는 요청 중, Fail 일 때는 요청 실패 그리고 Success 일 때는 인자의 값을 꺼내서 값을 렌더 합니다.
 
@@ -906,8 +970,7 @@ click!
 
 ReScript를 프로젝트에 부분적으로 적용하면서 원활한 통합이 가능합니다.
 
-프로젝트에 JavaScript나 TypeScript를 사용하고 있었다면
-무슨 언어를 쓸까 고민하지 않고 ReScript로 작성한 코드를 한 줄 한 줄 늘리면서 점진적 채택을 할 수 있습니다.
+프로젝트에 JavaScript나 TypeScript를 사용하고 있었다면 ReScript로 작성한 코드를 한 줄 한 줄 늘리면서 점진적 채택을 할 수 있습니다.
 -->
 
 ---
@@ -931,7 +994,7 @@ Js.log(add(1, 2))
 - 타입 어노테이션을 줘서 타입 안전하게 할 수도 있다.
 
 <!--
-ReScript 확장자인 res로 파일을 만들고 raw JavaScript 코드를 작성할 수 있습니다.
+ReScript 파일에 raw JavaScript 코드를 작성할 수 있습니다.
 
 만약 나는 ReScript에 적응했지만 동료가 힘들어한다면 ReScript 파일에 raw JavaScript를 작성하게 하며 천천히 스며들게 할 수도 있습니다.
 -->
@@ -965,8 +1028,7 @@ export declare function fromFalsy<A>(value: A): Option<ExtractValue<A>>;
 TypeScript 코드 베이스에서 작업 중이고, 타입을 유지하면서 ReScript 코드를 합치고 싶을 수도 있습니다.
 그렇다면 genType을 사용해 ReScript를 TypeScript 로 내보낼 수 있습니다.
 
-TypeScript 환경을 타깃으로 한 함수형 프로그래밍 유틸리티 라이브러리인 ts-belt에서도 genType을 사용하고 있습니다.
-아웃풋을 보면 꽤나 정교합니다.
+TypeScript 환경을 타깃으로 한 함수형 프로그래밍 유틸리티 라이브러리인 ts-belt에서도 genType을 사용한 아웃풋을 사용하고 있습니다.
 
 한 예시를 들고 왔는데요.
 value가 있으면 Some(value)를 없으면 None을 리턴하는 fromFalsy를 gentype으로 내보내면 아래와 같은 TypeScript 코드로 변환됩니다.

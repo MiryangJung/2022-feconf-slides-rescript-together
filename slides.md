@@ -23,6 +23,14 @@ favicon: "https://rescript-lang.org/static/nav-logo@2x.png"
   </span>
 </div>
 
+<div class="absolute right-10 bottom-10">
+  
+  <a href="https://github.com/MiryangJung/2022-feconf-slides-rescript-together" target="_blank">
+    2022-feconf-slides-rescript-together
+  </a>
+
+</div>
+
 <!--
 안녕하세요. 2022 FECONF에서 ReScript 같이 해요라는 제목으로 발표를 하게 된 정미량이라고 합니다.  
 ReScript를 들어보신 분들도 계시고, 처음 접해보신 분들도 계실텐데 아마 대부분 초면이실 거 같네요.  
@@ -1190,6 +1198,7 @@ type props = { data: IndexQuery_graphql.Types.response}
 
 릴레이는 자체 컴파일이 실행되기 때문에 쿼리에 어떤 인자가 필요한 지를 타입으로 컴파일 타임에 알 수 있습니다.
 존재하지 않는 걸 부를 수 없고, ReScript와 결합한다면 타입 세이프티하게 쿼리를 사용할 수 있게 됩니다.
+-->
 
 ---
 

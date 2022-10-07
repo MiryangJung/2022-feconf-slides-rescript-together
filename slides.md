@@ -95,9 +95,6 @@ ReScript를 가볍게 알아보고, 제가 사용해보면서 작게 좋았던 �
 -->
 
 ---
-layout: image-right
-image: '/images/cookie.png'
----
 
 # 예상 청자
 
@@ -108,6 +105,8 @@ image: '/images/cookie.png'
 - 함수형 프로그래밍 언어에 관심 있으신 분
 - 강력한 타입 언어를 사용해 보고 싶으신 분
 - ReScript 도입을 망설이고 있으셨던 분
+
+<img src="/images/cookie.png" alt="쿠키" class="absolute right-0 top-0 h-full" />
 
 <!--
 발표에 들어가기 앞서 제 발표는 프런트엔드 비기너이신 분, 새로운 언어를 가볍게 알아보고 싶으신 분, 함수형 프로그래밍 언어에 관심 있으신 분,

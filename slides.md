@@ -9,7 +9,7 @@ fonts:
   sans: 'Pretendard'
   mono: 'Elice Digital Coding'
 download: false
-favicon: '/images/rescript.png'
+favicon: 'https://rescript-lang.org/static/nav-logo@2x.png'
 ---
 
 <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-rose-300 to-red-600">

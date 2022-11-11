@@ -9,7 +9,7 @@ fonts:
   sans: "Pretendard"
   mono: "Elice Digital Coding"
   provider: 'none'
-download: false
+download: true
 favicon: "https://rescript-lang.org/static/nav-logo@2x.png"
 ---
 
@@ -38,6 +38,14 @@ ReScript를 들어보신 분들도 계시고, 처음 접해보신 분들도 계�
 저는 JavaScript와 TypeScript를 사용해왔었고, 올해 2월부터 6개월 넘게 ReScript를 사용하고 있습니다.  
 개발 경험이 좋아서 제목처럼 다른 분들과 같이 하기 위해 발표를 준비하게 되었습니다.
 -->
+
+---
+
+<div class="section">
+  <a class="m-auto" href="https://miryangjung.github.io/2022-feconf-slides-rescript-together" target="_blank">
+    miryangjung.github.io/2022-feconf-slides-rescript-together
+  </a>
+</div>
 
 ---
 
